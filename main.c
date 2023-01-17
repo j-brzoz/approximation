@@ -153,6 +153,8 @@ int main (int argc, char **argv)
 
 		fclose (gpf);
   	}
-
+    
+	free_pts(&pts);
+	free_spl(&spl);
   return 0;
 }

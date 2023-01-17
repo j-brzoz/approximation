@@ -3,7 +3,9 @@
 
 static int realloc_pts_failed (points_t * pts, int size)
 {
-	return realloc (pts->x, size * sizeof *pts->x) == NULL || realloc (pts->y, size * sizeof *pts->y) == NULL;
+	pts->x = realloc(pts->x, size * sizeof *pts->x);
+    pts->y = realloc(pts->y, size * sizeof *pts->y);
+    return pts->x == NULL || pts->y == NULL;
 }
 
 int read_pts_failed (FILE * inf, points_t * pts)
@@ -42,4 +44,9 @@ int read_pts_failed (FILE * inf, points_t * pts)
       		return 1;
 
   return 0;
+}
+
+void free_pts(points_t *pts){
+  free(pts->x);
+  free(pts->y);
 }

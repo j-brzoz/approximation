@@ -54,3 +54,12 @@ double value_spl (spline_t * spl, double x)
 		+ dx * dx / 2 *  spl->f2[i] 
 		+ dx * dx * dx / 6 * spl->f3[i];
 }
+
+void free_spl(spline_t *spl){
+  free(spl->f1);
+  free(spl->f2);
+  free(spl->f3);
+  free(spl->f);
+  free(spl->x);
+}
+
