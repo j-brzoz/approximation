@@ -3,8 +3,7 @@
 
 #include <stdio.h>
 
-void
-make_spl (points_t * pts, spline_t * spl)
+void make_spl (points_t * pts, spline_t * spl)
 {
 
 	int n= pts->n - 1;
