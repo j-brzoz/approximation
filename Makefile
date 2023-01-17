@@ -1,25 +1,25 @@
-aprox: main.o splines.o points.o aproksymator_na_bazie.o gaus/libge.a
-	$(CC) -o aprox  main.o splines.o points.o aproksymator_na_bazie.o -L gaus -l ge
+aprox: main.o splines.o points.o bin/aproksymator_na_bazie.o gaus/bin/libge.a
+	$(CC) -o bin/aprox main.o splines.o points.o bin/aproksymator_na_bazie.o -L gaus/bin -l ge
 
-czebyszew: main.o splines.o points.o aproksymator_czebyszew.o gaus/libge.a
-	$(CC) -o czebyszew  main.o splines.o points.o aproksymator_czebyszew.o -L gaus -l ge
+czebyszew: main.o splines.o points.o bin/aproksymator_czebyszew.o gaus/bin/libge.a
+	$(CC) -o bin/czebyszew  main.o splines.o points.o bin/aproksymator_czebyszew.o -L gaus/bin -l ge
 
-intrp: main.o splines.o points.o interpolator.o gaus/libge.a
-	$(CC) -o intrp  main.o splines.o points.o interpolator.o -L gaus -l ge
+intrp: main.o splines.o points.o bin/interpolator.o gaus/bin/libge.a
+	$(CC) -o bin/intrp  main.o splines.o points.o bin/interpolator.o -L gaus/bin -l ge
 
 prosta: main.o splines.o points.o prosta.o
-	$(CC) -o prosta  main.o splines.o points.o prosta.o	
+	$(CC) -o bin/prosta  main.o splines.o points.o prosta.o	
 
-aproksymator_na_bazie.o: makespl.h points.h gaus/piv_ge_solver.h
-	$(CC) -I gaus -c aproksymator_na_bazie.c
+bin/aproksymator_na_bazie.o: makespl.h points.h gaus/piv_ge_solver.h
+	$(CC) -I gaus -c aproksymator_na_bazie.c -o bin/aproksymator_na_bazie.o
 
-aproksymator_czebyszew.o: makespl.h points.h gaus/piv_ge_solver.h
-	$(CC) -I gaus -c aproksymator_czebyszew.c
+bin/aproksymator_czebyszew.o: makespl.h points.h gaus/piv_ge_solver.h
+	$(CC) -I gaus -c aproksymator_czebyszew.c -o bin/aproksymator_czebyszew.o
 
-interpolator.o: makespl.h points.h gaus/piv_ge_solver.h
-	$(CC) -I gaus -c interpolator.c
+bin/interpolator.o: makespl.h points.h gaus/piv_ge_solver.h
+	$(CC) -I gaus -c interpolator.c -o bin/interpolator.o
 
 .PHONY: clean
 
 clean:
-	-rm *.o aprox intrp prosta
+	-rm bin/*.o aprox intrp prosta czebyszew
