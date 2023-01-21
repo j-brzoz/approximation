@@ -11,7 +11,8 @@ make_spl (points_t * pts, spline_t * spl){
 	double *x = pts->x;
 	double *y = pts->y;
 	
-    for (i = 0; i <= n - 1; ++i) h[i] = x[i + 1] - x[i];
+    for (i = 0; i <= n - 1; ++i) 
+	    h[i] = x[i + 1] - x[i];
 
     for (i = 1; i <= n - 1; ++i){
         A[i] = 3 * (y[i + 1] - y[i]) / h[i] - 3 * (y[i] - y[i - 1]) / h[i - 1];
@@ -43,8 +44,8 @@ make_spl (points_t * pts, spline_t * spl){
 			spl->x[i]= pts->x[i];
 			spl->f[i]= pts->y[i];
 			spl->f1[i] = f[i];
-			spl->f2[i] = ff[i];
-			spl->f3[i] = fff[i];
+			spl->f2[i] = 2 * ff[i];   
+			spl->f3[i] = 6 * fff[i];  
 		}
 		spl->x[n]= pts->x[n];
 			spl->f[n]= pts->y[n];
