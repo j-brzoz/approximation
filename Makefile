@@ -34,4 +34,4 @@ obj/prosta.o: src/makespl.h
 .PHONY: clean
 
 clean:
-	-rm bin/*.o aprox intrp prosta czebyszew
+	-rm obj/*.o aprox intrp prosta czebyszew
